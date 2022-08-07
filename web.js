@@ -74,8 +74,8 @@ E = go to the right`
 }
 
 function scrollBottom() {
-    document.querySelector('panel1').scrollTop = document.querySelector('panel1').scrollHeight
-    document.querySelector('panel2').scrollTop = document.querySelector('panel2').scrollHeight
+    document.querySelector('.panel1').scrollTop = document.querySelector('.panel1').scrollHeight
+    document.querySelector('.panel2').scrollTop = document.querySelector('.panel2').scrollHeight
 }
 
 const hex = (value, length = 2) => {
