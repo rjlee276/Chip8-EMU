@@ -14,7 +14,7 @@ function emulateCycle() {
 async function load() {
     const rom = event.target.value
     const response = await fetch(`./roms/${rom}`)
-    const arrayBuffer = await response.headers.arrayBuffer()
+    const arrayBuffer = await response.arrayBuffer()
     const uint8array = new Uint8Array(arrayBuffer)
     const romBuffer = new RomBuffer(uint8array)
 
