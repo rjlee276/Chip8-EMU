@@ -145,7 +145,7 @@ function displayMemory() {
     const addresz = '0x' + hex(address, 4)
     while (address < 4096) {
         let select1 = document.querySelector('.panel1')
-        select1.append(<div>1</div>)
+        select1.append('<div>1</div>')
         address += 2
     }
 }
