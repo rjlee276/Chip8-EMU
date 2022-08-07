@@ -142,7 +142,6 @@ function displayMemory() {
     while (address < 4096) {
         let select1 = document.querySelector('.panel1')
         select1.append("<div class='pc'></div>")
-        document.querySelector('.pc').innerHTML(`${addresz} - ${disassemble(cpu.memory, address)}`)
         address += 2
     }
 }
