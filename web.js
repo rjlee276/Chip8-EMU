@@ -2,6 +2,8 @@ var script = document.createElement('script');
 script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js';
 document.getElementsByTagName('head')[0].appendChild(script);
 
+let displayMemory = require('./web2')
+
 let timer = 0
 function emulateCycle() {
     timer++
@@ -26,7 +28,7 @@ async function load() {
     cpu.interface.clearDisplay()
     cpu.load(romBuffer)
     displayInstructions(rom)
-    displayMemory()
+    displayMemory.displayMemory()
     scrollBottom()
 }
 
@@ -137,17 +139,6 @@ function scrollBottom() {
 const hex = (value, length = 2) => {
     const padded = '0000' + value.toString(16).toUpperCase()
     return padded.substr(padded.length - length)
-}
-
-function displayMemory() {
-    let address = 0x200
-    const clasz = address
-    const addresz = '0x' + hex(address, 4)
-    while (address < 4096) {
-        let select1 = document.querySelector('.panel1')
-        select1.append('<div>1</div>')
-        address += 2
-    }
 }
 
 function updateHighlight() {
