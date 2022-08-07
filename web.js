@@ -86,7 +86,7 @@ const hex = (value, length = 2) => {
 function displayMemory() {
     const clasz = cpu.PC
     const addresz = '0x' + hex(cpu.PC, 4)
-    let select1 = document.querySelector('panel1')
+    let select1 = document.querySelector('.panel1')
     select1.append(`<div class='pc ${clasz}'>${addresz} - ${cpu.decode(cpu.fetch()).instruction.id}</div>`)
 }
 
@@ -96,7 +96,7 @@ function updateHighlight() {
 
 function displayRegisters() {
     for (let i = 0; i < cpu.registers; i++) {
-        let select2 = document.querySelector('panel2')
+        let select2 = document.querySelector('.panel2')
         select2.append(`<div>V${i}: ${cpu.registers[i]}</div>`)
     }
 }
