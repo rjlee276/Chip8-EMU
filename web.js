@@ -6,7 +6,9 @@ function emulateCycle() {
         timer = 0
     }
 
-    cpu.step()
+    if (!cpu.halted) {
+        cpu.step()
+    }
 
     setTimeout(emulateCycle, 2)
 }
@@ -62,7 +64,6 @@ function displayInstructions(rom) {
 
             X = go down
             `
-
             break
 
         case 'INVADERS':
