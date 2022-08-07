@@ -1,36 +1,38 @@
+const blessed = require('blessed')
 const { cpuInterface } = require('./cpu_interface')
-const { display_height, display_width, color } = require('../data/const_vals')
+const { display_width, display_height, color } = require('../data/const_vals')
 const keyMap = require('../data/key_map')
 
-class webInterface extends cpuInterface {
+class terminalInterface extends cpuInterface {
     constructor() {
         super()
-
+        this.screen = blessed.screen({
+            smartCSR: true
+        })
         this.frameBuffer = this.createFrameBuffer()
-        this.screen = document.querySelector('canvas')
-        this.multiplier = 10
-        this.screen.width = display_width * this.multiplier
-        this.screen.height = display_height * this.multiplier
-        this.context = this.screen.getContext('2d')
-        this.context.fillStyle = 'black'
-        this.context.fillRect(0, 0, this.screen.width, this.screen.height)
+        this.screen.title = 'chip8'
+        this.color = blessed.helpers.attrToBinary({ fg: color })
 
         this.keys = 0
         this.keyPressed = undefined
 
         this.soundEnabled = false
 
-        document.addEventListener('keydown', event => {
-            const index = keyMap.indexOf(event.key)
+        this.screen.key(['escape', 'C-c'], function () {
+            process.exit(0)
+        })
+
+        this.screen.on('keypress', (_, key) => {
+            const index = keyMap.indexOf(key.full)
+
             if (index > -1) {
                 this.setKeys(index)
             }
         })
 
-        document.addEventListener('keyup', event => {
+        setInterval(() => {
             this.resetKeys()
-        })
-
+        }, 100)
     }
 
     createFrameBuffer() {
@@ -73,38 +75,36 @@ class webInterface extends cpuInterface {
     }
 
     drawPixel(x, y, value) {
-        //returns true if this collides with something that is already a 1, or already set
         const collision = this.frameBuffer[y][x] & value
         this.frameBuffer[y][x] ^= value
 
         if (this.frameBuffer[y][x]) {
-            this.context.fillStyle = color
-            //identify where to fill rect using the coordinates and upscaling them, and then specify the dimensions of the rect to be 
-            //1/64 and 1/32 of the screen's dimensions
-            this.context.fillRect(
-                x * this.multiplier,
-                y * this.multiplier,
-                this.multiplier,
-                this.multiplier)
+            this.screen.fillRegion(this.color, '█', x, x + 1, y, y + 1)
         } else {
-            this.context.fillStyle = 'black'
-            this.context.fillRect(
-                x * this.multiplier,
-                y * this.multiplier,
-                this.multiplier,
-                this.multiplier)
+            this.screen.clearRegion(x, x + 1, y, y + 1)
         }
 
+        this.screen.render()
         return collision
     }
 
     clearDisplay() {
         this.frameBuffer = this.createFrameBuffer()
-        this.context.fillStyle = 'black'
-        this.context.fillRect(0, 0, this.screen.width, this.screen.height)
+        this.screen.clearRegion(0, display_width, 0, display_height)
+    }
+
+    enableSound() {
+        this.soundEnabled = true
+    }
+
+    disableSound() {
+        this.soundEnabled = false
     }
 }
 
-module.exports = {
-    webInterface
-}
+
+module.exports = { terminalInterface }
+
+
+
+
