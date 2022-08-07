@@ -15,6 +15,7 @@ async function load() {
     const rom = event.target.value
     console.log(rom)
     const response = await fetch(`./roms/${rom}`)
+    console.log(response)
     const arrayBuffer = await response.arrayBuffer()
     const uint8array = new Uint8Array(arrayBuffer)
     const romBuffer = new RomBuffer(uint8array)
