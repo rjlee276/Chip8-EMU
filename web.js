@@ -2,8 +2,6 @@ var script = document.createElement('script');
 script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js';
 document.getElementsByTagName('head')[0].appendChild(script);
 
-let displayMemory = require('./web2')
-
 let timer = 0
 function emulateCycle() {
     timer++
@@ -28,7 +26,7 @@ async function load() {
     cpu.interface.clearDisplay()
     cpu.load(romBuffer)
     displayInstructions(rom)
-    displayMemory.displayMemory()
+    displayMemory()
     scrollBottom()
 }
 
