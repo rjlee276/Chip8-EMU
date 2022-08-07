@@ -8,6 +8,4 @@ $(document).ready(function () {
             address += 2
         }
     }
-
-    module.exports = { displayMemory }
 })
