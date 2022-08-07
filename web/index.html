@@ -9,18 +9,29 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="chip8_web_style.css">
     <link href='https://fonts.googleapis.com/css?family=Press Start 2P' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet'>
     <title>Chip-8</title>
 </head>
 
 <body>
-    <div class="container position-relative me-lg-3" style="top: 200px">
+    <div class="logo-container position-relative">
+        <pre class="logo">
+     ██╗██╗██████╗  █████╗
+     ██║██║██╔══██╗██╔══██╗
+     ██║██║██████╔╝╚█████╔╝
+ ██  ██║██║██╔═══╝ ██╔══██╗
+ █████╔╝██║██║     ╚█████╔╝
+ ╚════╝ ╚═╝╚═╝      ╚════╝</pre>
+        <h6>A Chip-8 Interpreter In JS</h6>
+    </div>
+    <div class="container position-relative me-lg-2">
         <div class="row">
             <div class="col">
                 <canvas width="640" height="320"></canvas>
             </div>
             <div class="col">
-                <select class="mt-3 mt-lg-0">
-                    <option disabled selected>Load ROM</option>
+                <select class="mt-3 mt-lg-0" style="text-align: center;">
+                    <option disabled selected>~ Load ROM ~</option>
                     <option value='CONNECT4'>Connect 4</option>
                     <option value='INVADERS'>Invaders</option>
                     <option value='LANDING'>Landing</option>
@@ -32,11 +43,25 @@
                     <option value='WALL'>Wall</option>
                 </select>
                 <h2 class="mt-4 mb-4 instr_banner">Instructions</h2>
-                <p class="instructions"></p>
+                <pre class="instructions">
+Chip8 games are ROMS that can
+be loaded in from the above menu.
+Controls will be displayed for 
+each game loaded.
+
+Beware! Some ROMS might be buggy!
+
+|1 2 3 4|
+|Q W E R|
+|A S D F|
+|Z X C V|</pre>
             </div>
         </div>
+        <div class="row info mt-3">
+            <div class="col-6 col-lg-4 panel1"></div>
+            <div class="col-6 col-lg-4 panel2"></div>
+        </div>
     </div>
-
 </body>
 
 </html>
