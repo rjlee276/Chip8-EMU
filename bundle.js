@@ -348,14 +348,6 @@ class cpuInterface {
         throw new TypeError('Must be implemented on inherited class')
     }
 
-    enableSound() {
-        throw new TypeError('Must be implemented on inherited class')
-    }
-
-    disableSound() {
-        throw new TypeError('Must be implemented on inherited class')
-    }
-
     setKeys() {
         throw new TypeError('Must be implemented on inherited class')
     }
@@ -553,7 +545,6 @@ class CPU {
             this.ST--
         } else {
             if (this.soundEnabled) {
-                this.interface.disableSound()
                 this.soundEnabled = false
             }
         }
@@ -853,7 +844,6 @@ class CPU {
                 this.ST = this.registers[args[1]]
                 if (this.ST > 0) {
                     this.soundEnabled = true
-                    this.interface.enableSound()
                 }
 
                 this.nextInstruction()
