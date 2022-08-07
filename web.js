@@ -135,6 +135,18 @@ const hex = (value, length = 2) => {
     return padded.substr(padded.length - length)
 }
 
+function displayMemory() {
+    let address = 0x200
+    const clasz = address
+    const addresz = '0x' + hex(address, 4)
+    while (address < 4096) {
+        let select1 = document.querySelector('.panel1')
+        select1.append(<div class='pc'></div>)
+        document.querySelector('.pc').innerHTML(`${addresz} - ${disassemble(cpu.memory, address)}`)
+        address += 2
+    }
+}
+
 function updateHighlight() {
     document.querySelector('.info > .panel1 > div').removeClass('pc')
 }
