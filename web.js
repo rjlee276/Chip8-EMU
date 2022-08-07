@@ -1,3 +1,7 @@
+var script = document.createElement('script');
+script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js';
+document.getElementsByTagName('head')[0].appendChild(script);
+
 let timer = 0
 function emulateCycle() {
     timer++
@@ -141,7 +145,7 @@ function displayMemory() {
     const addresz = '0x' + hex(address, 4)
     while (address < 4096) {
         let select1 = document.querySelector('.panel1')
-        select1.append("<div class='pc'></div>")
+        select1.append(`<div class='pc'></div>`)
         address += 2
     }
 }
