@@ -6,11 +6,13 @@ function emulateCycle() {
         timer = 0
     }
 
-    cpu.step()
-    updateHighlight()
-    displayMemory()
-    displayRegisters()
-    scrollBottom()
+    if (!cpu.halted) {
+        cpu.step()
+        updateHighlight()
+        displayMemory()
+        displayRegisters()
+        scrollBottom()
+    }
     setTimeout(emulateCycle, 2)
 }
 
