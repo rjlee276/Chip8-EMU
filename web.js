@@ -8,7 +8,6 @@ function emulateCycle() {
 
     if (!cpu.halted) {
         cpu.step()
-        updateHighlight()
         displayMemory()
         displayRegisters()
         scrollBottom()
