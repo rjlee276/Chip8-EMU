@@ -1,0 +1,9 @@
+{
+    "scripts": {
+        "play:terminal": "node scripts/terminal",
+        "build:web": "browserify -t brfs scripts/browser.js > web/bundle.js"
+    },
+    "dependencies": {
+        "browserify": "^17.0.0"
+    }
+}
