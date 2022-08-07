@@ -18,14 +18,6 @@ class cpuInterface {
         throw new TypeError('Must be implemented on inherited class')
     }
 
-    enableSound() {
-        throw new TypeError('Must be implemented on inherited class')
-    }
-
-    disableSound() {
-        throw new TypeError('Must be implemented on inherited class')
-    }
-
     setKeys() {
         throw new TypeError('Must be implemented on inherited class')
     }
