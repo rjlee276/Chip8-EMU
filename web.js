@@ -1,5 +1,3 @@
-import $ from "jquery";
-
 let timer = 0
 function emulateCycle() {
     timer++
@@ -87,16 +85,16 @@ const hex = (value, length = 2) => {
 function displayMemory() {
     const clasz = cpu.PC
     const addresz = '0x' + hex(cpu.PC, 4)
-    $('panel1').append(`<div class='pc ${clasz}'>${addresz} - ${cpu.decode(cpu.fetch()).instruction.id}</div>`)
+    document.querySelector('panel1').append(`<div class='pc ${clasz}'>${addresz} - ${cpu.decode(cpu.fetch()).instruction.id}</div>`)
 }
 
 function updateHighlight() {
-    $('.info > .panel1 > div').removeClass('pc')
+    document.querySelector('.info > .panel1 > div').removeClass('pc')
 }
 
 function displayRegisters() {
     for (let i = 0; i < cpu.registers; i++) {
-        $('panel2').append(`<div>V${i}: ${cpu.registers[i]}</div>`)
+        document.querySelector('panel2').append(`<div>V${i}: ${cpu.registers[i]}</div>`)
     }
 }
 
