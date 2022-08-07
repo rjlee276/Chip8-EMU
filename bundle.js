@@ -390,7 +390,7 @@ class webInterface extends cpuInterface {
         this.soundEnabled = false
 
         document.addEventListener('keydown', event => {
-            const index = keyMap.indexOf(key.full)
+            const index = keyMap.indexOf(event.key)
             if (index > -1) {
                 this.setKeys(index)
             }
