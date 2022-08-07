@@ -55,7 +55,6 @@ class CPU {
             this.ST--
         } else {
             if (this.soundEnabled) {
-                this.interface.disableSound()
                 this.soundEnabled = false
             }
         }
@@ -355,7 +354,6 @@ class CPU {
                 this.ST = this.registers[args[1]]
                 if (this.ST > 0) {
                     this.soundEnabled = true
-                    this.interface.enableSound()
                 }
 
                 this.nextInstruction()
