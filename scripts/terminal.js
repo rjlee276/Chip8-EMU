@@ -21,7 +21,7 @@ function emulateCycle() {
 
     cpu.step()
 
-    setTimeout(emulateCycle, 2)
+    setTimeout(emulateCycle, 3)
 }
 
 emulateCycle()
