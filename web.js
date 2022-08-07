@@ -157,7 +157,7 @@ function displayRegisters() {
 
 document.querySelector('select').addEventListener('change', load)
 
-emulateCycle(address)
+emulateCycle()
 
 
 
