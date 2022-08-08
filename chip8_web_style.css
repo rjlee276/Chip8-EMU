@@ -69,12 +69,12 @@ h6 {
 .panel2 {
     color: #33ff66;
     font-family: 'VT323', monospace;
-    font-size: 17px;
-    height: 100px;
+    font-size: 20px;
+    height: 200px;
     overflow: scroll;
 }
 
 .pc {
     background-color: #33ff66;
-    color: transparent;
+    color: #141414;
 }
