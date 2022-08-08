@@ -144,7 +144,7 @@ function displayMemory() {
     const clasz = address
     const addresz = '0x' + hex(address, 4)
     while (address < 4096) {
-        $('.panel1').append('<div>1</div>')
+        $('.panel1').append(`<div class='${clasz}'>${addresz} - ${disassemble(cpu.memory, address)}</div>`)
         address += 2
     }
 }
