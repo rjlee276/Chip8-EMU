@@ -5,7 +5,7 @@ document.getElementsByTagName('head')[0].appendChild(script);
 let timer = 0
 function emulateCycle() {
     timer++
-    if (timer % 5 === 0) {
+    if (timer % 2 === 0) {
         cpu.tick_increment()
         timer = 0
     }
@@ -14,7 +14,7 @@ function emulateCycle() {
         cpu.step()
         updateHighlight()
     }
-    setTimeout(emulateCycle, 2)
+    setTimeout(emulateCycle, 1.5)
 }
 
 async function load() {
