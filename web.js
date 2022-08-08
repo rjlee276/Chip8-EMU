@@ -5,7 +5,7 @@ document.getElementsByTagName('head')[0].appendChild(script);
 let timer = 0
 function emulateCycle() {
     timer++
-    if (timer % 8 === 0) {
+    if (timer % 5 === 0) {
         cpu.tick_increment()
         timer = 0
     }
@@ -136,6 +136,7 @@ const hex = (value, length = 2) => {
 }
 
 function displayMemory() {
+    $('.panel1').empty()
     let address = 0x200
     while (address < 4096) {
         const clasz = address
