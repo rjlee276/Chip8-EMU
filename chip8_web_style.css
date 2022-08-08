@@ -84,4 +84,6 @@ h6 {
     font-size: 13px;
     font-family: 'Press Start 2P';
     color: #33ff66;
+    border-top: 1px solid #33ff66;
+    padding-top: 10px;
 }
