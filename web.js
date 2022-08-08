@@ -106,6 +106,7 @@ Hold W = Shoot`
             instructions = `A = Drop *Care* Package
 
 keep in mind that this was made a while ago!`
+            break
     }
 
     document.querySelector('.instructions').textContent = instructions
