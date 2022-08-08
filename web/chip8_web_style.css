@@ -1,33 +1,89 @@
-body{
-    background-color:#141414;
+body {
+    background-color: #141414;
 }
 
 
-canvas{
+canvas {
     border: 4px solid #333;
 }
 
-select{
+select {
     -webkit-appearance: none;
     width: 250px;
     height: 50px;
     padding: 13px;
-    background-color: transparent; 
-    border: 1px solid #33ff66; 
+    background-color: transparent;
+    border: 1px solid #33ff66;
     color: #33ff66;
-    font-family: 'Press Start 2P', sans-serif; 
+    font-family: 'Press Start 2P', sans-serif;
 }
 
-.instr_banner{
-    color: #33ff66;  
-    font-family: 'Press Start 2P', sans-serif; 
-     
+.instr_banner {
+    color: #33ff66;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 23px;
+
 }
 
-p{
+p {
     max-width: 450px;
-    color: #33ff66;   
-    font-family: 'Press Start 2P', sans-serif; 
+    color: #33ff66;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 13px
+}
 
+.logo {
+    color: #33ff66;
+    font-size: 12px;
+    font-family: 'Press Start 2P';
+    font-weight: 400;
+    overflow: visible;
+    margin-top: 40px;
+    line-height: 14px;
+    letter-spacing: -1px;
+}
 
+.logo-container {
+    margin: auto;
+    width: 640px;
+    padding-left: 150px;
+    margin-bottom: 70px;
+}
+
+h6 {
+    color: #33ff66;
+    font-family: 'Press Start 2P';
+    position: absolute;
+    right: 120px;
+}
+
+.instructions {
+    color: #33ff66;
+    font-family: 'VT323';
+    font-size: 20px;
+    overflow: visible;
+    line-height: 17.5px;
+}
+
+.panel1,
+.panel2,
+.panel3 {
+    color: #33ff66;
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    height: 480px;
+    overflow: scroll;
+}
+
+.pc {
+    background-color: #33ff66;
+    color: #141414;
+}
+
+.header {
+    font-size: 13px;
+    font-family: 'Press Start 2P';
+    color: #33ff66;
+    border-top: 1px solid #33ff66;
+    padding-top: 10px;
 }
