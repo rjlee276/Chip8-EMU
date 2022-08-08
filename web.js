@@ -166,6 +166,9 @@ function displayRegisters() {
     for (let i = 0; i < cpu.registers.length; i++) {
         $('.panel2').append(`<div>V${i}: ${cpu.registers[i]}</div>`)
     }
+    $(".panel3").empty();
+    $(".panel3").append(`<div>PC: ${cpu.PC}</div>`);
+    $(".panel3").append(`<div>I: ${cpu.I}</div>`);
 }
 
 document.querySelector('select').addEventListener('change', load)
