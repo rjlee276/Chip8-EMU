@@ -70,11 +70,17 @@ h6 {
     color: #33ff66;
     font-family: 'VT323', monospace;
     font-size: 20px;
-    height: 350px;
+    height: 450px;
     overflow: scroll;
 }
 
 .pc {
     background-color: #33ff66;
     color: #141414;
+}
+
+.header {
+    font-size: 13px;
+    font-family: 'Press Start 2P';
+    display: inline-block;
 }
