@@ -12,6 +12,7 @@ function emulateCycle() {
 
     if (!cpu.halted) {
         cpu.step()
+        displayRegisters()
         updateHighlight()
     }
     setTimeout(emulateCycle, 1.5)
@@ -161,9 +162,9 @@ function updateHighlight() {
 }
 
 function displayRegisters() {
-    for (let i = 0; i < cpu.registers; i++) {
-        let select2 = document.querySelector('.panel2')
-        select2.append(`<div>V${i}: ${cpu.registers[i]}</div>`)
+    $('.panel2').empty()
+    for (let i = 0; i < cpu.registers.length; i++) {
+        $('.panel2').append(`<div>V${i}: ${cpu.registers[i]}</div>`)
     }
 }
 
