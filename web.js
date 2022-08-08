@@ -62,9 +62,8 @@ Q = go down
 
 Player 2: 
 
-2 = go up
+Z = go up
 X = go down`
-
             break
 
         case 'INVADERS':
@@ -73,6 +72,40 @@ W = shoot
 Q = go to the left
 E = go to the right`
             break
+
+        case 'WALL':
+            instructions = `2 = go up
+Q = go down
+
+sometimes it's best to hold down!`
+            break
+
+        case 'TICTACTOE':
+            instructions = `|2 3 4|
+|Q W E|
+|R A S|`
+            break
+
+        case 'SPACE':
+            instructions = `V = start game/flight
+V = start over after crash
+C = continue
+2 = go up
+Q = go down`
+            break
+
+        case 'TANK':
+            instructions = `Hold A = go up
+Hold 3 = go down
+Hold Q = go left
+Hold E = go right
+Hold W = Shoot`
+            break
+
+        case 'LANDING':
+            instructions = `A = Drop *Care* Package
+
+keep in mind that this was made a while ago!`
     }
 
     document.querySelector('.instructions').textContent = instructions
