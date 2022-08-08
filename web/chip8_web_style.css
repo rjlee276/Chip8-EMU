@@ -66,15 +66,24 @@ h6 {
 }
 
 .panel1,
-.panel2 {
+.panel2,
+.panel3 {
     color: #33ff66;
     font-family: 'VT323', monospace;
-    font-size: 17px;
-    height: 100px;
+    font-size: 20px;
+    height: 480px;
     overflow: scroll;
 }
 
 .pc {
     background-color: #33ff66;
-    color: transparent;
+    color: #141414;
+}
+
+.header {
+    font-size: 13px;
+    font-family: 'Press Start 2P';
+    color: #33ff66;
+    border-top: 1px solid #33ff66;
+    padding-top: 10px;
 }
