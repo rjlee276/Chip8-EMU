@@ -5,7 +5,7 @@ document.getElementsByTagName('head')[0].appendChild(script);
 let timer = 0
 function emulateCycle() {
     timer++
-    if (timer % 3 === 0) {
+    if (timer % 8 === 0) {
         cpu.tick_increment()
         timer = 0
     }
@@ -29,7 +29,6 @@ async function load() {
     displayInstructions(rom)
     updateHighlight()
     displayMemory()
-    scrollBottom()
 }
 
 function displayInstructions(rom) {
@@ -129,11 +128,6 @@ function disassemble(program, addr) {
         if (kk === 0x65) return `LD ${x}, [I]`
     }
     return "-"
-}
-
-function scrollBottom() {
-    document.querySelector('.panel1').scrollTop = document.querySelector('.panel1').scrollHeight
-    document.querySelector('.panel2').scrollTop = document.querySelector('.panel2').scrollHeight
 }
 
 const hex = (value, length = 2) => {
