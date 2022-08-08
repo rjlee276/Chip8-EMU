@@ -12,6 +12,7 @@ function emulateCycle() {
 
     if (!cpu.halted) {
         cpu.step()
+        updateHighlight()
     }
     setTimeout(emulateCycle, 2)
 }
@@ -26,6 +27,7 @@ async function load() {
     cpu.interface.clearDisplay()
     cpu.load(romBuffer)
     displayInstructions(rom)
+    updateHighlight()
     displayMemory()
     scrollBottom()
 }
@@ -144,13 +146,23 @@ function displayMemory() {
     while (address < 4096) {
         const clasz = address
         const addresz = '0x' + hex(address, 4)
-        $('.panel1').append(`<div class='${clasz}'>${addresz} - ${disassemble(cpu.memory, address)}</div>`)
+        $('.panel1').append(`<div class='addr-${clasz}'>${addresz} - ${disassemble(cpu.memory, address)}</div>`)
         address += 2
     }
 }
 
 function updateHighlight() {
-    document.querySelector('.info > .panel1 > div').removeClass('pc')
+    $('.panel1 > div').removeClass('pc')
+    const pc = cpu.PC
+    const currentAddress = $(`.panel1 .addr-${pc}`).addClass("pc")
+    if (currentAddress[0]) {
+        const container = $(".panel1");
+        container.scrollTop(
+            currentAddress.offset().top -
+            container.offset().top +
+            container.scrollTop()
+        );
+    }
 }
 
 function displayRegisters() {
