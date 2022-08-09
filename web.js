@@ -12,7 +12,7 @@ function emulateCycle(RomBuffer, list) {
 
     if (!cpu.halted) {
         for (let i = 0; i < RomBuffer.data.length; i += 2) {
-            list.push(cpu.decode(this.memory[i] << 8 | this.memory[i + 1] << 0)) //assign to some empty list
+            list.splice(0x200, 0, cpu.decode(cpu.memory[0x200 + i] << 8 | cpu.memory[0x200 + i + 1] << 0)) //assign to some empty list
         }
 
         cpu.execute(list[cpu.PC])
@@ -212,7 +212,7 @@ function displayRegisters() {
     $(".panel3").append(`<div>I: ${cpu.I}</div>`);
 }
 
-list = []
+list = new Array(4096)
 document.querySelector('select').addEventListener('change', emulateCycle(load, list))
 
 
