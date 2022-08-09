@@ -3,7 +3,7 @@ script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js';
 document.getElementsByTagName('head')[0].appendChild(script);
 
 let timer = 0
-function emulateCycle(RomBuffer) {
+function emulateCycle(RomBuffer, list) {
     timer++
     if (timer % 2 === 0) {
         cpu.tick_increment()
@@ -212,7 +212,8 @@ function displayRegisters() {
     $(".panel3").append(`<div>I: ${cpu.I}</div>`);
 }
 
-document.querySelector('select').addEventListener('change', emulateCycle(load))
+list = []
+document.querySelector('select').addEventListener('change', emulateCycle(load, list))
 
 
 
