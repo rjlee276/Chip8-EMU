@@ -571,7 +571,7 @@ class CPU {
 
     //fetch address from CPU memory
     fetch() {
-        return (this.memory[this.PC])
+        return (this.memory[this.PC] << 8 | this.memory[this.PC + 1] << 0)
     }
 
     //disassemble opcode
