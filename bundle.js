@@ -531,7 +531,8 @@ class CPU {
             //need to reserve two slots of memory for storing the opcode
             //since the CPU has 8 bit memory, we need to store opcodes as two seperate indexes of memory, which is why 
             //we need to traverse through the memory by 2
-            this.memory[memoryStart + i] = romData[i]
+            this.memory[memoryStart + 2 * i] = romData[i] >> 8
+            this.memory[memoryStart + 2 * i + 1] = romData[i] & 0x00ff
         }
     }
 
@@ -557,11 +558,11 @@ class CPU {
     }
 
     nextInstruction() {
-        this.PC = this.PC + 1
+        this.PC = this.PC + 2
     }
 
     skipInstruction() {
-        this.PC = this.PC + 2
+        this.PC = this.PC + 4
     }
 
     halt() {
@@ -570,7 +571,7 @@ class CPU {
 
     //fetch address from CPU memory
     fetch() {
-        return (this.memory[this.PC])
+        return (this.memory[this.PC] << 8 | this.memory[this.PC + 1] << 0)
     }
 
     //disassemble opcode
@@ -601,7 +602,7 @@ class CPU {
 
             case 'JMP_ADDR':
                 //JMP - jump to address NNN
-                this.PC = Math.floor(args[0] / 2)
+                this.PC = args[0]
                 break
 
             case 'CALL_ADDR':
@@ -618,7 +619,7 @@ class CPU {
                 this.stack[this.SP] = this.PC + 2
 
                 //make the jump to the first argument, which is NNN
-                this.PC = Math.floor(args[0] / 2)
+                this.PC = args[0]
                 break
 
             case 'SE_VX_NN':
@@ -752,7 +753,7 @@ class CPU {
 
             case 'JMP_V0_ADDR':
                 //JMP - Jump to address NNN + V0
-                this.PC = this.registers[0] + Math.floor(args[1] / 2)
+                this.PC = this.registers[0] + args[1]
                 break
 
             case 'RND_VX_NN':
@@ -909,10 +910,6 @@ class CPU {
                     this.registers[i] = this.memory[this.I + i]
                 }
 
-                this.nextInstruction()
-                break
-
-            case 'DW':
                 this.nextInstruction()
                 break
 
