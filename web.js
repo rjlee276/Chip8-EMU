@@ -33,9 +33,9 @@ async function load() {
     updateHighlight()
     displayMemory()
 
-    list = new Array(4096)
+    list = new Uint8Array(4096)
     for (let i = 0; i < romBuffer.data.length; i++) {
-        list.splice(0x200 + i, 0, cpu.decode(cpu.memory[0x200 + i * 2] << 8 | cpu.memory[0x200 + i * 2 + 1] << 0)) //assign to some empty list
+        list[0x200 + i] = cpu.decode(cpu.memory[0x200 + i * 2] << 8 | cpu.memory[0x200 + i * 2 + 1] << 0)//assign to some empty list
     }
 }
 
@@ -212,7 +212,7 @@ function displayRegisters() {
     $(".panel3").append(`<div>I: ${cpu.I}</div>`);
 }
 
-list = new Array(4096)
+list = new Uint8Array(4096)
 document.querySelector('select').addEventListener('change', load)
 emulateCycle()
 
