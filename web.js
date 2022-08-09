@@ -5,20 +5,18 @@ document.getElementsByTagName('head')[0].appendChild(script);
 let timer = 0
 function emulateCycle() {
     timer++
-    if (timer % 2 === 0) {
+    if (timer % 3 === 0) {
         cpu.tick_increment()
         timer = 0
     }
 
     if (!cpu.halted) {
-        for (let i = 0; i < 9; i++) {
-            cpu.step()
-            displayRegisters()
-            updateHighlight()
-        }
+        cpu.step()
+        displayRegisters()
+        updateHighlight()
 
     }
-    setTimeout(emulateCycle, 1.5)
+    setTimeout(emulateCycle, 1)
 }
 
 async function load() {
