@@ -558,11 +558,11 @@ class CPU {
     }
 
     nextInstruction() {
-        this.PC = this.PC + 2
+        this.PC = this.PC + 1
     }
 
     skipInstruction() {
-        this.PC = this.PC + 4
+        this.PC = this.PC + 2
     }
 
     halt() {
@@ -602,7 +602,7 @@ class CPU {
 
             case 'JMP_ADDR':
                 //JMP - jump to address NNN
-                this.PC = args[0]
+                this.PC = Math.floor(args[0] / 2)
                 break
 
             case 'CALL_ADDR':
