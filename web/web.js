@@ -3,7 +3,7 @@ script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js';
 document.getElementsByTagName('head')[0].appendChild(script);
 
 let timer = 0
-function emulateCycle() {
+function emulateCycle(list) {
     timer++
     if (timer % 2 === 0) {
         cpu.tick_increment()
@@ -11,7 +11,16 @@ function emulateCycle() {
     }
 
     if (!cpu.halted) {
-        cpu.step()
+
+        for (let i = 0; i < RomBuffer.data.length; i += 2) {
+            list.push(cpu.decode(this.memory[i] << 8 | this.memory[i + 1] << 0)) //assign to some empty list
+        }
+
+        cpu.execute(list[cpu.PC])
+        //execute according to opcode
+
+        //fetch in loop and decode all opcodes
+        //then execute using the real PC
         displayRegisters()
         updateHighlight()
     }
@@ -207,7 +216,8 @@ function displayRegisters() {
 
 document.querySelector('select').addEventListener('change', load)
 
-emulateCycle()
+let list = []
+emulateCycle(list)
 
 
 
