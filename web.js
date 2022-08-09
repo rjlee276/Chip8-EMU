@@ -10,7 +10,7 @@ function emulateCycle(RomBuffer, list) {
         timer = 0
     }
 
-    if (true) {
+    if (!cpu.halted) {
         for (let i = 0; i < RomBuffer.data.length; i += 2) {
             list.splice(0x200, 0, cpu.decode(cpu.fetch())) //assign to some empty list
         }
@@ -213,8 +213,8 @@ function displayRegisters() {
 }
 
 list = new Array(4096)
-document.querySelector('select').addEventListener('change', emulateCycle(load, list))
-
+document.querySelector('select').addEventListener('change', load)
+emulateCycle(load, list)
 
 
 
