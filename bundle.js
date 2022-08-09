@@ -912,6 +912,10 @@ class CPU {
                 this.nextInstruction()
                 break
 
+            case 'DW':
+                this.nextInstruction()
+                break
+
             default:
                 this.halted = true
                 throw new Error('illegal instruction')
