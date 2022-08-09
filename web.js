@@ -11,7 +11,12 @@ function emulateCycle() {
     }
 
     if (!cpu.halted) {
-        cpu.step()
+        for (let i = 0; i < RomBuffer.data.length; i += 2) {
+            list.push(cpu.decode(this.memory[i] << 8 | this.memory[i + 1] << 0)) //assign to some empty list
+        }
+
+        cpu.execute(list[cpu.PC])
+
         displayRegisters()
         updateHighlight()
     }
