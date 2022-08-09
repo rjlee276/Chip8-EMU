@@ -3,7 +3,7 @@ script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js';
 document.getElementsByTagName('head')[0].appendChild(script);
 
 let timer = 0
-function emulateCycle(RomBuffer, list) {
+function emulateCycle(list) {
     timer++
     if (timer % 2 === 0) {
         cpu.tick_increment()
@@ -11,9 +11,6 @@ function emulateCycle(RomBuffer, list) {
     }
 
     if (!cpu.halted) {
-        for (let i = 0; i < RomBuffer.length; i += 2) {
-            list.splice(0x200, 0, cpu.decode(cpu.fetch())) //assign to some empty list
-        }
         console.log(list[cpu.PC])
         cpu.execute(list[cpu.PC])
 
@@ -36,7 +33,10 @@ async function load() {
     updateHighlight()
     displayMemory()
 
-    return romBuffer
+    list = new Array(4096)
+    for (let i = 0; i < RomBuffer.length; i += 2) {
+        list.splice(0x200, 0, cpu.decode(cpu.fetch())) //assign to some empty list
+    }
 }
 
 function displayInstructions(rom) {
@@ -213,8 +213,8 @@ function displayRegisters() {
 }
 
 list = new Array(4096)
-document.querySelector('select').addEventListener('change', load)
-emulateCycle(load, list)
+document.querySelector('select').addEventListener('change', load(list))
+emulateCycle(list)
 
 
 
