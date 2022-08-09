@@ -555,14 +555,15 @@ class CPU {
         const instruction = this.decode(opcode)
 
         this.execute(instruction)
+        this.PC += 2
     }
 
     nextInstruction() {
-        this.PC = this.PC + 2
+        this.PC = this.PC + 0
     }
 
     skipInstruction() {
-        this.PC = this.PC + 4
+        this.PC = this.PC + 2
     }
 
     halt() {
@@ -571,7 +572,7 @@ class CPU {
 
     //fetch address from CPU memory
     fetch() {
-        return (this.memory[this.PC] << 8 | this.memory[this.PC + 1] << 0)
+        return (this.memory[this.PC])
     }
 
     //disassemble opcode
