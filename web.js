@@ -34,7 +34,7 @@ async function load() {
     displayMemory()
 
     list = new Array(4096)
-    for (let i = 0; i < RomBuffer.length; i += 2) {
+    for (let i = 0; i < romBuffer.data.length; i += 2) {
         list.splice(0x200 + i, 0, cpu.decode(cpu.fetch())) //assign to some empty list
     }
 }
