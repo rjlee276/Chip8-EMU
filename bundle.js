@@ -555,15 +555,14 @@ class CPU {
         const instruction = this.decode(opcode)
 
         this.execute(instruction)
-        this.PC += 2
     }
 
     nextInstruction() {
-        this.PC = this.PC + 0
+        this.PC = this.PC + 2
     }
 
     skipInstruction() {
-        this.PC = this.PC + 2
+        this.PC = this.PC + 4
     }
 
     halt() {
