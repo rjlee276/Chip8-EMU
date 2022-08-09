@@ -35,7 +35,7 @@ async function load() {
 
     list = new Array(4096)
     for (let i = 0; i < romBuffer.data.length; i += 2) {
-        list.splice(0x200 + i, 0, cpu.decode(this.memory[0x200 + i] << 8 | this.memory[0x200 + i + 1] << 0)) //assign to some empty list
+        list.splice(0x200 + i, 0, cpu.decode(cpu.memory[0x200 + i] << 8 | cpu.memory[0x200 + i + 1] << 0)) //assign to some empty list
     }
 }
 
