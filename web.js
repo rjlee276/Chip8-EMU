@@ -11,9 +11,12 @@ function emulateCycle() {
     }
 
     if (!cpu.halted) {
-        cpu.step()
-        displayRegisters()
-        updateHighlight()
+        for (let i = 0; i < 9; i++) {
+            cpu.step()
+            displayRegisters()
+            updateHighlight()
+        }
+
     }
     setTimeout(emulateCycle, 1.5)
 }
