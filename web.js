@@ -3,7 +3,7 @@ script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js';
 document.getElementsByTagName('head')[0].appendChild(script);
 
 let timer = 0
-function emulateCycle(list) {
+function emulateCycle() {
     timer++
     if (timer % 2 === 0) {
         cpu.tick_increment()
@@ -214,7 +214,7 @@ function displayRegisters() {
 
 list = new Array(4096)
 document.querySelector('select').addEventListener('change', load)
-emulateCycle(list)
+emulateCycle()
 
 
 
