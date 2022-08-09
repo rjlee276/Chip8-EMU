@@ -14,7 +14,7 @@ function emulateCycle(RomBuffer, list) {
         for (let i = 0; i < RomBuffer.data.length; i += 2) {
             list.splice(0x200, 0, cpu.decode(cpu.fetch())) //assign to some empty list
         }
-
+        console.log(list[cpu.PC])
         cpu.execute(list[cpu.PC])
 
         displayRegisters()
