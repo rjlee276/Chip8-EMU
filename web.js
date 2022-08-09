@@ -213,7 +213,7 @@ function displayRegisters() {
 }
 
 list = new Array(4096)
-document.querySelector('select').addEventListener('change', load(list))
+document.querySelector('select').addEventListener('change', load)
 emulateCycle(list)
 
 
