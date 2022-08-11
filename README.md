@@ -13,7 +13,7 @@ I also used Bootstrap 5 to design the page (so as to make it more mobile-friendl
 There are still a handful of tweaks I'd like to work on in the future, but for now, what you see here is a working implementation of the Chip8 (Jip8) in Javascript!
 
 
-#Improvements for the future
+# Improvements for the future
 
 Speaking of improvements, I would like to figure out how to implement the sound into the program. I have been hearing legends of a glorious beep that supposedly plays at the initialization of the interpreter. 
 
