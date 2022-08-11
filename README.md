@@ -20,7 +20,7 @@ Speaking of improvements, I would like to figure out how to implement the sound 
 I'd also like to make an on-screen keyboard for mobile devices, because as of now, the web app is just eye candy for those using smaller screens. 
 
 
-#Acknowledgements
+# Acknowledgements
 
 Much thanks to these resources in helping me better understand the realm of emulation and how I would go about implementing my interpreter.
 
